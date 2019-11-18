@@ -58,7 +58,7 @@ spaceAPI() {
 	    "temperature": [{
 	      "value": $space_sensors_temperature,
 	      "unit": "°C",
-	      "location": "Door"
+	      "location": "front door"
 	    }],
 	    "door_locked": [{
 	      "value": $door_bool,
