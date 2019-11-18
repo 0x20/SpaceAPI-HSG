@@ -1,0 +1,15 @@
+[Unit]
+Description=spaceAPI
+after=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/opt/SpaceAPI-HSG/spaceAPI.sh
+Restart=always
+RestartSec=1
+StartLimitBurst=10
+ExecStopPost=/bin/sh -c 'rm -f /var/www/html/.spaceapi.json'
+
+[Install]
+WantedBy=multi-user.target
