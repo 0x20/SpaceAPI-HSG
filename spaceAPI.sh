@@ -31,7 +31,7 @@ spaceAPI() {
 	{
 	  "api": "0.13",
 	  "space": "Hackerspace.Gent",
-	  "logo": "https://hackerspace.gent/landing/img/0x20i.png",
+	  "logo": "https://mqtt.hackerspace.gent/0x20.png",
 	  "url": "https://hackerspace.gent",
 	  "location": {
 	    "address": "Blekerijstraat 75, 9000 Gent, Belgium",
