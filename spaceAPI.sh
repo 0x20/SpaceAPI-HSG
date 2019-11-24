@@ -55,15 +55,19 @@ spaceAPI() {
 	    "lastchange": $space_lastchange
 	  },
 	  "sensors": {
-	    "temperature": [{
-	      "value": $space_sensors_temperature,
-	      "unit": "°C",
-	      "location": "front door"
-	    }],
-	    "door_locked": [{
-	      "value": $door_bool,
-	      "location": "front door"
-	    }]
+	    "temperature": [
+	      {
+	        "value": $space_sensors_temperature,
+	        "unit": "°C",
+	        "location": "front door"
+	      }
+	    ],
+	    "door_locked": [
+	      {
+	        "value": $door_bool,
+	        "location": "front door"
+	      }
+	    ]
 	  },
 	  "projects": [
 	    "https://newline.gent",
