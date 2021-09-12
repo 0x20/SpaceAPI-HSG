@@ -7,7 +7,6 @@ file="spaceapi.json"
 spaceAPI() {
 
 	door_state="$(mosquitto_sub -h "$host" -t hsg/doorkeeper/lock/status -C 1)" && last_msg_time=$(date +%s)
-	door_temp="$(mosquitto_sub -h "$host" -t hsg/doorkeeper/temperature -C 1)"
 
 	# we want a string 'boolean' to represent if the space is open
 	if (( door_state )); then
@@ -24,7 +23,6 @@ spaceAPI() {
 
 	jq -n \
 		--argjson space_state "$space_state" \
-		--argjson space_sensors_temperature "$door_temp" \
 		--argjson space_lastchange "$last_msg_time" \
 		--argjson door_bool "$door_bool" \
 	'
@@ -55,13 +53,6 @@ spaceAPI() {
 	    "lastchange": $space_lastchange
 	  },
 	  "sensors": {
-	    "temperature": [
-	      {
-	        "value": $space_sensors_temperature,
-	        "unit": "°C",
-	        "location": "front door"
-	      }
-	    ],
 	    "door_locked": [
 	      {
 	        "value": $door_bool,
