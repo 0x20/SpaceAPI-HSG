@@ -9,7 +9,7 @@ ExecStart=/opt/SpaceAPI-HSG/spaceAPI.sh
 Restart=always
 RestartSec=1
 StartLimitBurst=10
-ExecStopPost=/bin/sh -c 'rm -f /var/www/html/.spaceapi.json'
+ExecStopPost=/bin/sh -c 'rm -f /var/www/html/mqtt/.spaceapi.json'
 
 [Install]
 WantedBy=multi-user.target

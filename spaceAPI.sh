@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 host="mqtt.hackerspace.gent"
-path="/var/www/html"
+path="/var/www/html/mqtt"
 file="spaceapi.json"
 
 spaceAPI() {
