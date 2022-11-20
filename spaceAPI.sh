@@ -7,6 +7,9 @@ file="spaceapi.json"
 spaceAPI() {
 
 	door_state="$(mosquitto_sub -h "$host" -t hsg/doorkeeper/lock/status -C 1)" && last_msg_time=$(date +%s)
+	air_temp="$(mosquitto_sub -h "$host" -t hsg/aio/sensor/ds18b20/state -C 1)"
+	identified="$(mosquitto_sub -h "$host" -t hsg/clarissa/identified -C 1)"
+	identifiers="$(mosquitto_sub -h "$host" -t hsg/clarissa/identifiers -C 1)"
 
 	# we want a string 'boolean' to represent if the space is open
 	if (( door_state )); then
@@ -15,19 +18,16 @@ spaceAPI() {
 		space_state="false";
 	fi
 
-	if (( door_state )); then
-		door_bool="false";
-	else
-		door_bool="true";
-	fi
-
 	jq -n \
 		--argjson space_state "$space_state" \
+		--argjson space_temperature "$air_temp" \
 		--argjson space_lastchange "$last_msg_time" \
-		--argjson door_bool "$door_bool" \
+		--argjson space_people_number "$identified" \
+		--argjson space_people_names "$identifiers" \
 	'
 	{
 	  "api": "0.13",
+          "api_compatibility": ["14"],
 	  "space": "Hackerspace.Gent",
 	  "logo": "https://mqtt.hackerspace.gent/0x20.png",
 	  "url": "https://hackerspace.gent",
@@ -39,7 +39,6 @@ spaceAPI() {
 	  },
 	  "contact": {
 	    "email": "info@hackerspace.gent",
-	    "irc": "irc://irc.freenode.org/0x20",
 	    "ml": "ghent@discuss.hackerspaces.be",
 	    "twitter": "@hsghent",
 	    "phone": "+3293953323",
@@ -53,18 +52,34 @@ spaceAPI() {
 	    "lastchange": $space_lastchange
 	  },
 	  "sensors": {
-	    "door_locked": [
-	      {
-	        "value": $door_bool,
-	        "location": "front door"
-	      }
-	    ]
+	    "temperature": [{
+	      "value": $space_temperature,
+	      "unit": "°C",
+	      "location": "air"
+	    }],
+	    "door_locked": [{
+	      "value": $space_state,
+	      "location": "front door"
+	    }],
+	    "people_now_present": [{
+	      "name": "clarissa",
+	      "value": $space_people_number,
+	      "names": $space_people_names,
+	      "location": "LAN"
+	    }]
 	  },
 	  "projects": [
 	    "https://newline.gent",
 	    "https://hackerspace.design",
 	    "https://github.com/0x20"
-	  ]
+	  ],
+	  "membership_plans": [{
+            "name": "regular",
+            "value": 25,
+            "currency": "EUR",
+            "billing_interval": "monthly",
+            "description": "discount rates and yearly invoice also available"
+	  }]
 	}
 	'
 }
