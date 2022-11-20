@@ -71,7 +71,8 @@ spaceAPI() {
 	  "projects": [
 	    "https://newline.gent",
 	    "https://hackerspace.design",
-	    "https://github.com/0x20"
+	    "https://github.com/0x20",
+	    "https://gitlab.com/evils/clarissa"
 	  ],
 	  "membership_plans": [{
             "name": "regular",
