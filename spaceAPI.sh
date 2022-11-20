@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+# shellcheck enable=all disable=SC2250
+
+set -e
+shopt -s inherit_errexit
 
 host="mqtt.hackerspace.gent"
 path="/var/www/html/mqtt"
@@ -12,14 +16,18 @@ spaceAPI() {
 	identifiers="$(mosquitto_sub -h "$host" -t hsg/clarissa/identifiers -C 1)"
 
 	# we want a string 'boolean' to represent if the space is open
+        # and if the door is locked
 	if (( door_state )); then
 		space_state="true";
+		door_locked="false";
 	else
 		space_state="false";
+		door_locked="true";
 	fi
 
 	jq -n \
 		--argjson space_state "$space_state" \
+                --argjson door_locked "$door_locked" \
 		--argjson space_temperature "$air_temp" \
 		--argjson space_lastchange "$last_msg_time" \
 		--argjson space_people_number "$identified" \
@@ -58,7 +66,7 @@ spaceAPI() {
 	      "location": "air"
 	    }],
 	    "door_locked": [{
-	      "value": $space_state,
+	      "value": $door_locked,
 	      "location": "front door"
 	    }],
 	    "people_now_present": [{
