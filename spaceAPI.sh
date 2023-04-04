@@ -40,9 +40,9 @@ spaceAPI() {
 	  "logo": "https://mqtt.hackerspace.gent/0x20.png",
 	  "url": "https://hackerspace.gent",
 	  "location": {
-	    "address": "Blekerijstraat 75, 9000 Gent, Belgium",
-	    "lon": 3.732478,
-	    "lat": 51.059770,
+	    "address": "Wiedauwkaai 51, 9032 Gent, Belgium",
+	    "lon": 3.72446,
+	    "lat": 51.07478,
 
 	  },
 	  "contact": {
