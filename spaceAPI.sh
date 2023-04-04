@@ -51,7 +51,6 @@ spaceAPI() {
 	    "matrix": "#hackerspace.gent:matrix.org",
 	    "mastodon": "@hsg@chaos.social",
 	    "twitter": "@hsghent",
-	    "phone": "+3293953323",
 	    "facebook": "https://facebook.com/hackerspace.gent"
 	  },
 	  "issue_report_channels": [
