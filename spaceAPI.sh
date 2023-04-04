@@ -14,7 +14,7 @@ spaceAPI() {
 	door_state="$(timeout 5 mosquitto_sub -h "$host" -t hsg/doorkeeper/lock/status -C 1 || echo 0)" && last_msg_time=$(date +%s)
 	air_temp="$(timeout 5 mosquitto_sub -h "$host" -t hsg/aio/sensor/ds18b20/state -C 1 || echo 0)"
 	identified="$(timeout 5 mosquitto_sub -h "$host" -t hsg/clarissa/identified -C 1 || echo 0)"
-	identifiers="$(timeout 5 mosquitto_sub -h "$host" -t hsg/clarissa/identifiers -C 1 || echo "[]")"
+	identifiers="$(timeout 5 mosquitto_sub -h "$host" -t hsg/clarissa/identifiers -C 1 || echo '[""]')"
 
 	# we want a string 'boolean' to represent if the space is open
         # and if the door is locked
