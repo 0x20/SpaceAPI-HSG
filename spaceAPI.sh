@@ -44,11 +44,11 @@ spaceAPI() {
 	    "address": "Wiedauwkaai 51, 9032 Gent, Belgium",
 	    "lon": 3.72446,
 	    "lat": 51.07478,
-
 	  },
 	  "contact": {
 	    "email": "info@hackerspace.gent",
 	    "ml": "ghent@discuss.hackerspaces.be",
+	    "mastodon": "@hsg@chaos.social",
 	    "twitter": "@hsghent",
 	    "phone": "+3293953323",
 	    "facebook": "https://facebook.com/hackerspace.gent"
