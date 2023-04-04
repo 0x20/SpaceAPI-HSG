@@ -5,7 +5,7 @@ set -e
 shopt -s inherit_errexit
 
 host="mqtt.hackerspace.gent"
-path="/var/www/html/mqtt"
+path="/var/www/hackerspace.gent/"
 file="spaceapi.json"
 
 spaceAPI() {
