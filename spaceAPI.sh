@@ -48,6 +48,7 @@ spaceAPI() {
 	  "contact": {
 	    "email": "info@hackerspace.gent",
 	    "ml": "ghent@discuss.hackerspaces.be",
+	    "matrix": "#hackerspace.gent:matrix.org",
 	    "mastodon": "@hsg@chaos.social",
 	    "twitter": "@hsghent",
 	    "phone": "+3293953323",
